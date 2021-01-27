@@ -1,23 +1,31 @@
-import React from 'react'
+import React, { Component } from 'react';
+import Searcher from '../components/Searcher';
 
-export default function MoviesPage() {
-    return (
-        <div>
-            <form className="SearchForm">
-                <button type="submit" className="SearchForm-button">
-                    <span className="SearchForm-button-label">Search</span>
-                </button>
-                <input
-                    className="SearchForm-input"
-                    type="text"
-                    autoComplete="off"
-                    autoFocus
-                    placeholder="Search movies"
-                />
-            </form>
-        </div>
-    )
+
+
+export class MoviesPage extends Component {
+
+    state = {
+
+    };
+    
+    handleChangeQuery = query => { 
+        console.log(query);
+        this.props.history.push({
+            pathname: this.props.location.pathname,
+            search: `query=${query}`
+        });
+    }
+
+    render() {  
+        return (
+            <div>
+                <Searcher onSubmit={this.handleChangeQuery} />
+            </div>
+        )
+    }
 }
 
+export default MoviesPage;
 
-// '/movies' - компонент <MoviesPage>, страница поиска фильмов по ключевому слову.
+

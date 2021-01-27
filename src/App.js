@@ -3,15 +3,14 @@ import {Route, Switch, Redirect} from 'react-router-dom'
 import HomePage from './movies/HomePage'
 import MovieDetailsPage from './movies/MovieDetailsPage';
 import MoviesPage from './movies/MoviesPage'
-import Navigation from './components/images/Navigation';
 import routes from './routes';
+import Header from './components/Header';
 
 
 
 const App = () => (
     <>
-        <Navigation />
-        <hr/>
+        <Header/>
         <Switch>
             <Route path={ routes.home } exact component={HomePage} />
             <Route path={ routes.movies } exact component={MoviesPage} />

@@ -24,8 +24,14 @@ const fetchMoviesRev = (id) => {
         .then(rev => rev.results)
 }
 
+const fetchMoviesSearch = (query) => {
+    return fetch(`${baseURL}search/movie?api_key=${apiKey}&language=en-US&query=${query}&page=1&include_adult=false`)       
+        .then(response => response.json())
+        .then(query => query.results)
+}
 
-export default { fetchMoviesTrend, fetchMoviesData, fetchMoviesCast, fetchMoviesRev};
+
+export default { fetchMoviesTrend, fetchMoviesData, fetchMoviesCast, fetchMoviesRev, fetchMoviesSearch};
 
 
 
@@ -48,3 +54,6 @@ export default { fetchMoviesTrend, fetchMoviesData, fetchMoviesCast, fetchMovies
 
 // reviews
 // https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
+
+// search
+// https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&query=cat&page=1&include_adult=false
