@@ -11,7 +11,8 @@ export class MovieDetailsPage extends Component {
 
     componentDidMount() {
         trendsAPI.fetchMoviesData(this.props.match.params.movieId)
-            .then(trend => this.setState({ trend }));
+            .then(trend => this.setState({ trend }))
+            .catch(error => console.log(error));
     }
 
     render() {
@@ -37,11 +38,12 @@ export class MovieDetailsPage extends Component {
                     <h4>Additional information</h4>
                     <ul>
                         {/* <li><Link to={`/movies/${trend.id}/cast`}>Cast</Link></li> */}
-                        {/* <Route path="/movies/:movieId" component={Cast} /> */}
-                        <Route path="/movies/:movieId" component={Cast} />
+                        <li><Route path="/movies/:movieId" component={Cast} /></li>
+                        
                         <li><Link to={`/movies/${trend.id}/reviews`}>Reviews</Link></li>
                         <Route path="/movies/:movieId" component={Reviews} />
                     </ul>
+                    {/* <Route path="/movies/:movieId" component={Cast} /> */}
                     </>
                 }
             </div>

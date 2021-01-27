@@ -270,7 +270,7 @@ form {
   margin: 0px 20px;
 }
 .MoviesInfo {
-  width: 320px;
+  width: 460px;
   border-style: ridge;
   padding: 0px 10px;
 }
@@ -288,6 +288,24 @@ form {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: justify;
   font-size: 14px;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: black;
+}
+
+.CastList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.CastItem {
+  margin: 2px;
+  width: 130px;
+  border-style: ridge;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: left;
+  font-size: 12px;
   font-style: normal;
   line-height: 1.25;
   letter-spacing: 0.02em;

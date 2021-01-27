@@ -7,7 +7,7 @@ export class Reviews extends Component {
 
 
     render() {
-        console.log(this.props.match.params.movieId);
+        // console.log(this.props.match.params.movieId);
         return (
             <div>
                 {this.state.review && <p> Reviews {this.state.review}</p> }

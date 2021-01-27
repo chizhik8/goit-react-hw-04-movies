@@ -12,7 +12,8 @@ export class HomePage extends Component {
 
     componentDidMount() {
         trendsAPI.fetchMoviesTrend()
-            .then(trends => this.setState({trends}));
+            .then(trends => this.setState({ trends }))
+            .catch(error => console.log(error));
     }
 
     render() {
