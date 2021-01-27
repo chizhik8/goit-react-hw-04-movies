@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import trendsAPI from '../services/moviesApi';
 
 
@@ -21,8 +20,6 @@ export class Cast extends Component {
         console.log('render loading:',this.state.loading);
         return (
             <div>
-                <Link to={`/movies/${this.props.match.params.movieId}/cast`}>Cast</Link>
-
                 {this.state.casts.length>0 &&
                     <ul className="CastList">
                     {this.state.casts.map(cast => (

@@ -37,16 +37,16 @@ export class MovieDetailsPage extends Component {
                     </div>
                     <h4>Additional information</h4>
                     <ul>
-                        {/* <li><Link to={`/movies/${trend.id}/cast`}>Cast</Link></li> */}
-                        <li><Route path="/movies/:movieId" component={Cast} /></li>
-                        
+                        <li><Link to={`/movies/${trend.id}/cast`}>Cast</Link></li>
                         <li><Link to={`/movies/${trend.id}/reviews`}>Reviews</Link></li>
-                        <Route path="/movies/:movieId" component={Reviews} />
                     </ul>
-                    {/* <Route path="/movies/:movieId" component={Cast} /> */}
+                    <hr />
+                    <Route path="/movies/:movieId" component={Cast} />
+                    <Route path="/movies/:movieId" component={Reviews} />
                     </>
                 }
             </div>
+            
         )
     }
 }
