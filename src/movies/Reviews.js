@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+
 
 export class Reviews extends Component {
-    // static propTypes = { }
+
+    state = { review: null, };
+
 
     render() {
+        console.log(this.props.match.params.movieId);
         return (
             <div>
-                Reviews
+                {this.state.review && <p> Reviews {this.state.review}</p> }
             </div>
         )
     }

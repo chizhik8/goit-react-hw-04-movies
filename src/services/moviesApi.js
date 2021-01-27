@@ -12,14 +12,14 @@ const fetchMoviesData = (id) => {
         .then(response => response.json())
 }
 
-const fetchMoviesImg = (id) => {
-    return fetch(`${baseURL}movie/${id}/images?api_key=${apiKey}`)       
+const fetchMoviesCast = (id) => {
+    return fetch(`${baseURL}movie/${id}/credits?api_key=${apiKey}`)       
         .then(response => response.json())
+        .then(casts => casts.cast)
 }
- 
 
 
-export default { fetchMoviesTrend, fetchMoviesData, fetchMoviesImg };
+export default { fetchMoviesTrend, fetchMoviesData, fetchMoviesCast};
 
 
 
@@ -36,3 +36,6 @@ export default { fetchMoviesTrend, fetchMoviesData, fetchMoviesImg };
 
 // images
 // https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=<<api_key>>&language=en-US
+
+// cast
+// https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US

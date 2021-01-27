@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import trendsAPI from '../services/moviesApi';
-
-// import PropTypes from 'prop-types'
+import routes from '../routes';
+import Cast from './Cast';
+import Reviews from './Reviews';
 
 export class MovieDetailsPage extends Component {
-    // static propTypes = {}
 
     state = { trend: null, };
 
@@ -15,39 +15,38 @@ export class MovieDetailsPage extends Component {
     }
 
     render() {
-        // console.log('MovieDetailsPage props.math', this.props.match.params.movieId);
         const { trend } = this.state;
-        // console.log(trend);
-
+        
         return (
             
             <div>
                 {this.state.trend && 
                     <>
-                    <div className="ButtonContainer"><button type='button' className="Button"><Link to="/">Go Back</Link></button> </div>
-                    <img src={`https://developers.themoviedb.org/3/movie/${trend.id}/images${trend.poster_path}`} alt={trend.original_title} width='280px' height='200px' />
-                    <h1>{trend.original_title}</h1>
-                    <p>User Score: {trend.vote_count}%</p>
-                    <h2>Overview</h2>
-                    <p>{trend.overview}</p>
-                    <h3>Genres</h3>
-                    <ul>{trend.genres.map(gen => (<li key={gen.id}>{gen.name}</li>))}</ul>
+                    <div className="ButtonContainer"><button type='button' className="Button"><Link to={ routes.home}>Go Back</Link></button> </div>
+                    <div className="MoviesInfoContainer">
+                        <img src={`https://developers.themoviedb.org/3/movie/${trend.id}/images${trend.poster_path}`} alt={trend.original_title} width="320px"/>
+                        <div className="MoviesInfo">
+                            <h1>{trend.original_title}</h1>
+                            <p>User Score: {trend.vote_count}%</p>
+                            <h2>Overview</h2>
+                            <p>{trend.overview}</p>
+                            <h3>Genres</h3>
+                            <ul className="MoviesGenresList">{trend.genres.map(gen => (<li className="MoviesGenresItem"  key={gen.id}>{gen.name}</li>))}</ul>
+                        </div>
+                    </div>
                     <h4>Additional information</h4>
                     <ul>
-                        <li><Link to={`/movies/${trend.id}/cast`}>Cast</Link></li>
+                        {/* <li><Link to={`/movies/${trend.id}/cast`}>Cast</Link></li> */}
+                        {/* <Route path="/movies/:movieId" component={Cast} /> */}
+                        <Route path="/movies/:movieId" component={Cast} />
                         <li><Link to={`/movies/${trend.id}/reviews`}>Reviews</Link></li>
+                        <Route path="/movies/:movieId" component={Reviews} />
                     </ul>
                     </>
                 }
             </div>
-        
-            
         )
     }
 }
 
 export default MovieDetailsPage;
-
-// '/movies/:movieId' - компонент < MovieDetailsPage >, страница с детальной информацией о кинофильме.
-// / movies /: movieId / cast - компонент < Cast >, информация о актерском составе. // Рендерится на странице<MovieDetailsPage>.
-// /movies/: movieId / reviews - компонент < Reviews >, информация об обзорах. // Рендерится на странице<MovieDetailsPage>.
