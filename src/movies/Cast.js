@@ -16,8 +16,8 @@ export class Cast extends Component {
     }
 
     render() {
-        console.log('render cast:',this.state.casts);
-        console.log('render loading:',this.state.loading);
+        // console.log('render cast:',this.state.casts);
+        // console.log('render loading:',this.state.loading);
         return (
             <div>
                 {this.state.casts.length>0 &&
