@@ -7,13 +7,13 @@ export class MoviesList extends Component {
    
 
     render() {
-        console.log(this.props);
+
         return (
             <div>
                 <ul className='trendingList'>
                     {this.props.list.map(mov => (
                         <li key={mov.id}>
-                            <Link to={`/pages/${mov.id}`}>{mov.title}</Link>
+                            <Link to={{ pathname: `/pages/${mov.id}`, state: {from: this.props.goBack} }}>{mov.title}</Link>
                         </li>))
                     }
                 </ul>  

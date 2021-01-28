@@ -17,14 +17,21 @@ export class MovieDetailsPage extends Component {
             .catch(error => console.log(error));
     }
 
+    handleGoBack = () => { 
+        if (this.props.location.state && this.props.location.state.from) {
+            this.props.history.push(this.props.location.state.from);
+         }
+
+    }
+
     render() {
         const { trend } = this.state;
-        console.log(this.props.match.url);
+
         return (
             <div>
                 {trend && 
                     <>
-                    <Button />
+                    <Button onClick={this.handleGoBack}/>
                     <MoviesInfo info={trend} />
                     <AddMovieInfo addInfo={trend} />
                     <Route path="/pages/:movieId" component={Cast} />

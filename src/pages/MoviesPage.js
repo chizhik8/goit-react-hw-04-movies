@@ -34,11 +34,12 @@ export class MoviesPage extends Component {
     }
 
     render() {  
+        const location = this.props.location ;
         
         return (
             <div>
                 <Searcher onSubmit={this.handleChangeQuery} />
-                <MoviesList list={this.state.movies}  />
+                <MoviesList list={this.state.movies}  goBack={ location}/>
             </div>
         )
     }

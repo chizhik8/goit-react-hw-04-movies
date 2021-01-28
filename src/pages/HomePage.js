@@ -17,10 +17,12 @@ export class HomePage extends Component {
 
     render() {
         const { trends } = this.state;
+        const location = this.props.location ;
+
         return (
             <div>
                 <h1>Trending today:</h1>
-                <MoviesList list={trends}/>
+                <MoviesList list={trends} goBack={ location}/>
             </div>
         )
     }
