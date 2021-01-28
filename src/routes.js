@@ -1,11 +1,25 @@
 import { lazy } from 'react';
 
-const AsyncComp = lazy();
-
-export default {
-        home: "/",
-        movies: "/pages",
-        movieDetails: "/pages/:movieId",
-        cast: "/pages/:movieId/cast",
-        reviews: "/pages/:movieId/reviews",
-}
+export const maineroutes = [
+  {
+    path: '/',
+    name: 'Home',
+    exact: true,
+    component: lazy(() => import('./pages/HomePage')),
+    isVisible: true,
+  },
+  {
+    path: '/pages/:movieId',
+    name: 'MoviesDetails',
+    exact: false,
+    component: lazy(() => import('./pages/MovieDetailsPage')),
+    isVisible: false,
+  },
+  {
+    path: '/pages',
+    name: 'Movies',
+    exact: false,
+    component: lazy(() => import('./pages/MoviesPage')),
+    isVisible: true,
+  },
+];
