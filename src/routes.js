@@ -1,3 +1,7 @@
+import { lazy } from 'react';
+
+const AsyncComp = lazy();
+
 export default {
         home: "/",
         movies: "/pages",
