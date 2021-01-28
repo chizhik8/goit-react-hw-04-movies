@@ -17,13 +17,16 @@ export class MovieDetailsPage extends Component {
 
     render() {
         const { trend } = this.state;
+        let routeBack = `${this.props.location.state.from.pathname}${this.props.location.state.from.search}`
         
+
+
         return (
             
             <div>
                 {this.state.trend && 
                     <>
-                    <div className="ButtonContainer"><button type='button' className="Button"><Link to={ routes.home}>Go Back</Link></button> </div>
+                    <div className="ButtonContainer"><button type='button' className="Button"><Link to={routeBack}>Go Back</Link></button> </div>
                     <div className="MoviesInfoContainer">
                         <img src={`https://developers.themoviedb.org/3/movie/${trend.id}/images${trend.poster_path}`} alt={trend.original_title} width="320px"/>
                         <div className="MoviesInfo">

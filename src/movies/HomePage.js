@@ -23,7 +23,7 @@ export class HomePage extends Component {
             <div>
                 <h1>Trending today:</h1>
                 <ul className='trendingList'>
-                    {trends.map(trend => (<li key={trend.id}><Link to={`/movies/${trend.id}`}>{trend.title}</Link></li>) )}
+                    {trends.map(trend => (<li key={trend.id}><Link to={{ pathname: `/movies/${trend.id}`, state: {from: this.props.location}}}>{trend.title}</Link></li>) )}
                 </ul>            
             </div>
         )

@@ -11,23 +11,20 @@ export class MoviesPage extends Component {
     
     componentDidMount() { 
         const { query } = queryString.parse(this.props.location.search);
-        if (query) {
-                moviesAPI.fetchMoviesSearch(query)
-            .then(movies => this.setState({movies}))
-            .catch(error => console.log(error))
-         }
+        if (query) { this.fetchMovies(query) }
     }
 
     componentDidUpdate(prevProps, prevState) { 
         const {query: prevQuery} = queryString.parse(prevProps.location.search);
         const {query: nextQuery} = queryString.parse(this.props.location.search);
-        if (prevQuery !== nextQuery) {
-            moviesAPI.fetchMoviesSearch(nextQuery)
-            .then(movies => this.setState({movies}))
-            .catch(error => console.log(error))
-         }
+        if (prevQuery !== nextQuery) { this.fetchMovies(nextQuery) }
     }
 
+    fetchMovies = query => { 
+            moviesAPI.fetchMoviesSearch(query)
+            .then(movies => this.setState({movies}))
+            .catch(error => console.log(error))   
+    }
 
     handleChangeQuery = query => { 
         this.props.history.push({
@@ -42,7 +39,7 @@ export class MoviesPage extends Component {
             <div>
                 <Searcher onSubmit={this.handleChangeQuery} />
                 <ul className='trendingList'>
-                    {this.state.movies.map(mov => (<li key={mov.id}><Link to={`/movies/${mov.id}`}>{mov.title}</Link></li>) )}
+                    {this.state.movies.map(mov => (<li key={mov.id}><Link to={{ pathname: `/movies/${mov.id}`, state: {from: this.props.location}}}>{mov.title}</Link></li>) )}
                 </ul>  
             </div>
         )
