@@ -7,7 +7,16 @@ import moviesAPI from '../services/moviesApi';
 
 export class MoviesPage extends Component {
 
-    state = { movies: []};
+    state = { movies: [] };
+    
+    componentDidMount() { 
+        const { query } = queryString.parse(this.props.location.search);
+        if (query) {
+                moviesAPI.fetchMoviesSearch(query)
+            .then(movies => this.setState({movies}))
+            .catch(error => console.log(error))
+         }
+    }
 
     componentDidUpdate(prevProps, prevState) { 
         const {query: prevQuery} = queryString.parse(prevProps.location.search);
