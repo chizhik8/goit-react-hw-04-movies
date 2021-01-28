@@ -311,3 +311,8 @@ form {
   letter-spacing: 0.02em;
   color: black;
 }
+
+.CastImg {
+  margin: 0px;
+  width: 130px;
+}

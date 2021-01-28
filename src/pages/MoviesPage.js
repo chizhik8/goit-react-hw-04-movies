@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import Searcher from '../components/Searcher';
+import MoviesList from '../components/MoviesList';
 import moviesAPI from '../services/moviesApi';
 
 
@@ -38,9 +38,7 @@ export class MoviesPage extends Component {
         return (
             <div>
                 <Searcher onSubmit={this.handleChangeQuery} />
-                <ul className='trendingList'>
-                    {this.state.movies.map(mov => (<li key={mov.id}><Link to={{ pathname: `/pages/${mov.id}`, state: {from: this.props.location}}}>{mov.title}</Link></li>) )}
-                </ul>  
+                <MoviesList list={this.state.movies}  />
             </div>
         )
     }
