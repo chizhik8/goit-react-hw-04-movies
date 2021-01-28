@@ -15,20 +15,33 @@ export class MovieDetailsPage extends Component {
             .catch(error => console.log(error));
     }
 
+    getGoBackLink = () => { 
+        const { state } = this.props.location;
+        if (state && state.from) {
+            // return this.props.history.push(state.from)
+            return `${this.props.location.state.from.pathname}${this.props.location.state.from.search}`
+        }
+        else { return this.props.location}
+        // this.props.history.push(routes.movies);
+        
+    }
+
     render() {
         const { trend } = this.state;
-        let routeBack = `${this.props.location.state.from.pathname}${this.props.location.state.from.search}`
-        
-
+        const routeBack = this.getGoBackLink();
 
         return (
             
             <div>
                 {this.state.trend && 
                     <>
-                    <div className="ButtonContainer"><button type='button' className="Button"><Link to={routeBack}>Go Back</Link></button> </div>
+                    <div className="ButtonContainer">
+                        <button type='button' className="Button">
+                            <Link to={routeBack}>Go Back</Link>
+                        </button>
+                    </div>
                     <div className="MoviesInfoContainer">
-                        <img src={`https://developers.themoviedb.org/3/movie/${trend.id}/images${trend.poster_path}`} alt={trend.original_title} width="320px"/>
+                        <img src={`https://image.tmdb.org/t/p/original${trend.poster_path}`} alt={trend.original_title} width="320px"/>
                         <div className="MoviesInfo">
                             <h1>{trend.original_title}</h1>
                             <p>User Score: {trend.vote_count}%</p>
@@ -40,12 +53,12 @@ export class MovieDetailsPage extends Component {
                     </div>
                     <h4>Additional information</h4>
                     <ul>
-                        <li><Link to={`/movies/${trend.id}/cast`}>Cast</Link></li>
-                        <li><Link to={`/movies/${trend.id}/reviews`}>Reviews</Link></li>
+                        <li><Link to={`/pages/${trend.id}/cast`}>Cast</Link></li>
+                        <li><Link to={`/pages/${trend.id}/reviews`}>Reviews</Link></li>
                     </ul>
                     <hr />
-                    <Route path="/movies/:movieId" component={Cast} />
-                    <Route path="/movies/:movieId" component={Reviews} />
+                    <Route path="/pages/:movieId" component={Cast} />
+                    <Route path="/pages/:movieId" component={Reviews} />
                     </>
                 }
             </div>

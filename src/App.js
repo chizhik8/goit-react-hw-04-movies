@@ -1,8 +1,8 @@
 import React from 'react'
 import {Route, Switch, Redirect} from 'react-router-dom'
-import HomePage from './movies/HomePage'
-import MovieDetailsPage from './movies/MovieDetailsPage';
-import MoviesPage from './movies/MoviesPage'
+import HomePage from './pages/HomePage'
+import MovieDetailsPage from './pages/MovieDetailsPage';
+import MoviesPage from './pages/MoviesPage'
 import routes from './routes';
 import Header from './components/Header';
 

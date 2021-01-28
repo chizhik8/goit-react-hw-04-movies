@@ -39,7 +39,7 @@ export class MoviesPage extends Component {
             <div>
                 <Searcher onSubmit={this.handleChangeQuery} />
                 <ul className='trendingList'>
-                    {this.state.movies.map(mov => (<li key={mov.id}><Link to={{ pathname: `/movies/${mov.id}`, state: {from: this.props.location}}}>{mov.title}</Link></li>) )}
+                    {this.state.movies.map(mov => (<li key={mov.id}><Link to={{ pathname: `/pages/${mov.id}`, state: {from: this.props.location}}}>{mov.title}</Link></li>) )}
                 </ul>  
             </div>
         )

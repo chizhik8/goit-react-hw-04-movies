@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import trendsAPI from '../services/moviesApi';
-// import PropTypes from 'prop-types'
+
 
 export class HomePage extends Component {
-    // static propTypes = {}
 
     state = {
         trends: []
@@ -18,12 +17,11 @@ export class HomePage extends Component {
 
     render() {
         const { trends } = this.state;
-        // console.log('Trending today:', trends);
         return (
             <div>
                 <h1>Trending today:</h1>
                 <ul className='trendingList'>
-                    {trends.map(trend => (<li key={trend.id}><Link to={{ pathname: `/movies/${trend.id}`, state: {from: this.props.location}}}>{trend.title}</Link></li>) )}
+                    {trends.map(trend => (<li key={trend.id}><Link to={{ pathname: `/pages/${trend.id}`, state: {from: this.props.location}}}>{trend.title}</Link></li>) )}
                 </ul>            
             </div>
         )
